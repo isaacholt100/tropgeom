@@ -1,4 +1,13 @@
-- What is the field $C{{t}}$ (field of complex Puiseux series)
-- What is the tropicalisation $"trop"(V(w - x^2 y + x y^2)) subset.eq RR^3$ where $w - x^2 y + x y^2 in K[w, x, y]$ where $V$ is vanishing set (where polynomial is zero). (Draw a picture with an explanation). Come back to Yue when you've got the answer. How is it different where $w - x^alpha + x^beta$, $x^alpha = x_1^(alpha_1) ... x_m^(alpha_m)$, similarly for $beta$.
-,
-Make notes in a Latex/typst file, based on things read from book, then can write up into a report at the end.
+#import "./template.typ": template
+#show: template
+
+- *Q*: What is the field $CC{{t}}$ (field of complex Puiseux series)?
+- *A*: Field of complex Puiseux series, $CC{{t}}$, is defined as $ CC{{t}} := union.big_(n in NN) CC\(\(t^(1\/n)\)\) = {sum_(m = -oo)^oo c_m t^(m \/ n): n in NN, c_i in CC} $
+
+- *Q*: Let $K = CC{{t}}$. What is the tropicalisation $"trop"(V(w - x^2 y + x y^2)) subset.eq RR^3$ where $w - x^2 y + x y^2 in K[w, x, y]$ where $V$ is vanishing set (where polynomial is zero). (Draw a picture with an explanation). How is it different for $w - x^alpha + x^beta$, $x^alpha = x_1^(alpha_1) ... x_m^(alpha_m)$, similarly for $beta$?
+- *A*: Let $f(w, x, y) = w - x^2 y + x y^2 in K[w, x, y]$, then $"trop"(f) = w plus.circle x^2 dot.circle y plus.circle x dot.circle y^2 = min(w, 2x + y, x + 2y)$ (since the coefficient of each monomial is a constant, so valuation $"val"$ is equal to $0$, using the natural "exponent" valuation on $CC{{t}}$). Now the tropical hypersurface is $ "trop"(V(f)) & = V("trop"(f)) \ & = {(w, x, y) in RR^3: "trop"(f)(w, x, y) "attains the minimum twice"} \ & = {(w, x, y) in RR^3: w = y + 2x <= x + 2y \ & "or" w = x + 2y <= 2x + y "or" 2x + y = x + 2y <= w} $ Let $ g(w, x_1, ..., x_m) = w - underline(x)^(underline(alpha)) + underline(x)^(underline(beta)) = w - x_1^(alpha_1) dots.h.c x_m^(alpha_m) + x_1^(beta_1) dots.h.c x_m^(beta_m) $ Then $ "trop"(g)(w, x_1, ..., x_m) & = min(w, alpha_1 x_1 + alpha_2 x_2 + dots.h.c + alpha_m x_m, beta_1 x_1 + dots.h.c + beta_m x_m) \ & = min(w, underline(alpha) dot.op underline(x), underline(beta) dot.op underline(x)) $ Hence $ "trop"(V(f)) & = V("trop"(f)) \ & = {(w, x_1, ..., x_m) in RR^3: w = underline(alpha) dot.op underline(x) <= underline(beta) dot.op underline(x) \ & "or" w = underline(beta) dot.op underline(x) <= underline(alpha) dot.op underline(x) "or" underline(alpha) dot.op underline(x) = underline(beta) dot.op underline(x) <= w} $
+
+Questions I have:
+- Does it matter what valuation you use, for example, if you use the trivial valuation? E.g. for Puiseux series, if the trivial valuation $"val"(c(t)) = 0$ was used instead of the exponent valuation, this would result in a different tropicalisation?
+- Not sure how to sketch the tropicalisation in Q2, I thought it had to be 3D, since $f$ has three parameters.
+- Are there any major differences between the min-plus and max-plus algebras, why has the book chosen min-plus? Do they lead to different results?
